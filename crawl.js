@@ -1,9 +1,8 @@
-require('babel-polyfill')
 const cheerio = require('cheerio')
 const requester = require('gw2e-requester')
 
-async function main () {
-  let ids = await getIds()
+async function main (discipline) {
+  let ids = await getIds(discipline)
   let rows = []
 
   for (let key in ids) {
@@ -14,10 +13,10 @@ async function main () {
 }
 
 // Get all ids for the discipline
-async function getIds () {
-  let items = await requester.single('http://bddatabase.net/query.php?a=recipes&type=alchemy&l=us&_=1460454030700')
+async function getIds (discipline) {
+  let items = await requester.single('http://bddatabase.net/query.php?a=recipes&type=' + discipline + '&l=us&_=1460454030700')
   items = items.aaData
-  items = items.map(item => JSON.parse(item[0]))
+  items = items.map(item => parseInt(item[0], 10))
   return items
 }
 
@@ -50,4 +49,5 @@ async function getForId (id) {
   return cells.join('\t')
 }
 
-main()
+let discipline = process.argv[2]
+main(discipline)

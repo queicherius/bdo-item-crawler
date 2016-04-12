@@ -1,7 +1,7 @@
 {
   "name": "bdo-item-crawler",
-  "version": "0.1.0",
-  "description": "Crawl bddatabase to build pretty spreadsheets",
+  "version": "0.2.0",
+  "description": "Crawl bddatabase to build pretty (google) spreadsheets",
   "main": "crawl.js",
   "dependencies": {
     "babel-preset-stage-0": "^6.5.0",
