@@ -1,5 +1,5 @@
 const cheerio = require('cheerio')
-const requester = require('gw2e-requester')
+const fetch = require('lets-fetch')
 
 async function main (discipline) {
   let ids = await getIds(discipline)
@@ -14,7 +14,7 @@ async function main (discipline) {
 
 // Get all ids for the discipline
 async function getIds (discipline) {
-  let items = await requester.single('http://bddatabase.net/query.php?a=recipes&type=' + discipline + '&l=us&_=1460454030700')
+  let items = await fetch.single('http://bddatabase.net/query.php?a=recipes&type=' + discipline + '&l=us&_=1460454030700')
   items = items.aaData
   items = items.map(item => parseInt(item[0], 10))
   return items
@@ -23,7 +23,7 @@ async function getIds (discipline) {
 // Go through the data of a single id and build a row out of it
 async function getForId (id) {
   let url = 'http://bddatabase.net/tip.php?id=recipe--' + id + '&l=us&nf=on'
-  let content = await requester.single(url, {type: 'text'})
+  let content = await fetch.single(url, {type: 'text'})
   let cells = []
 
   let $ = cheerio.load(content)
