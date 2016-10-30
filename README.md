@@ -1,6 +1,8 @@
 # bdo-item-crawler
 
-Crawl bddatabase to build pretty (google) spreadsheets :star:
+[![No Maintenance Intended](https://img.shields.io/badge/No%20Maintenance%20Intended-%E2%9C%95-red.svg?style=flat-square)](http://unmaintained.tech/)
+
+> Crawl bddatabase to build pretty (google) spreadsheets :star:
 
 ![Spreadsheet Screenshot](screen.png)
 
